@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Job Matcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .dropzone {
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .dropzone.highlight {
+            border-color: #2196F3;
+            background-color: #e3f2fd;
+        }
+        .file-input {
+            display: none;
+        }
+        .error-message {
+            color: #d32f2f;
+            background-color: #ffebee;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .success-message {
+            color: #388e3c;
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .file-preview {
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+        .file-preview p {
+            margin: 0 0 0 10px;
+        }
+        button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0b7dda;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        .help-text {
+            color: #666;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .section button {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #resume-upload-btn {
+            background-color: #4CAF50;
+        }
+        #resume-upload-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resume Job Matcher</h1>
+    <p>Upload your resume and a job description to see how well they match.</p>
+    
+    {% if error %}
+    <div class="error-message">
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+    
+    {% if success %}
+    <div class="success-message">
+        <p>{{ success }}</p>
+    </div>
+    {% endif %}
+    
+    <form id="upload-form" method="POST" enctype="multipart/form-data">
+        <div class="section">
+            <h2>1. Upload Your Resume</h2>
+            <div id="dropzone" class="dropzone">
+                <p>Drag & drop your resume here or click to browse</p>
+                <p>Accepted formats: PDF, DOCX, TXT</p>
+                <input type="file" name="resume" id="file-input" class="file-input" accept=".pdf,.docx,.txt">
+            </div>
+            
+            <div id="file-preview" class="file-preview">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <p id="file-name">filename.pdf</p>
+            </div>
+            
+            <!-- Resume upload button -->
+            <button type="button" id="resume-upload-btn" onclick="document.getElementById('file-input').click();">Select Resume</button>
+        </div>
+        
+        <div class="section">
+            <h2>2. Enter Job Description</h2>
+            <div class="form-group">
+                <label for="job-description">Job Description</label>
+                <textarea id="job-description" name="job_description" placeholder="Copy and paste the complete job description here..."></textarea>
+                <p class="help-text">For best results, include the entire job posting with all requirements, qualifications, and responsibilities.</p>
+            </div>
+        </div>
+        
+        <button type="submit" id="submit-btn" disabled>Analyze Match</button>
+    </form>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropzone = document.getElementById('dropzone');
+            const fileInput = document.getElementById('file-input');
+            const filePreview = document.getElementById('file-preview');
+            const fileName = document.getElementById('file-name');
+            const submitBtn = document.getElementById('submit-btn');
+            const jobDescription = document.getElementById('job-description');
+            
+            // Prevent defaults for drag events
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            // Highlight dropzone when dragging file over it
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                dropzone.classList.add('highlight');
+            }
+            
+            function unhighlight() {
+                dropzone.classList.remove('highlight');
+            }
+            
+            // Handle dropped files
+            dropzone.addEventListener('drop', handleDrop, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                fileInput.files = files;
+                updateFilePreview();
+            }
+            
+            // Handle file input change
+            fileInput.addEventListener('change', updateFilePreview);
+            
+            // Handle job description input
+            jobDescription.addEventListener('input', checkFormValidity);
+            
+            // Click on dropzone to trigger file input
+            dropzone.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            function updateFilePreview() {
+                if (fileInput.files.length) {
+                    const file = fileInput.files[0];
+                    fileName.textContent = file.name;
+                    filePreview.style.display = 'flex';
+                    checkFormValidity();
+                } else {
+                    filePreview.style.display = 'none';
+                    submitBtn.disabled = true;
+                }
+            }
+            
+            function checkFormValidity() {
+                // Enable submit button only if we have both a file and job description
+                if (fileInput.files.length && jobDescription.value.trim() !== '') {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
