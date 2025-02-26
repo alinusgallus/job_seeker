@@ -1,0 +1,114 @@
+# tasks.yaml
+# This file defines all the tasks used in the resume analysis system
+
+resume_analysis_task:
+  description: >
+    <|begin_of_text|>
+    Analyze the resume data and identify the key qualifications, skills, and experiences.
+    
+    Resume Sections:
+    {resume}
+    
+    Focus on:
+    1. Key technical and soft skills presented in the resume
+    2. Level of experience and areas of expertise
+    3. Educational qualifications and certifications
+    4. Achievements and their impact
+    5. Overall resume strength and organization
+    
+    Provide a comprehensive analysis of the candidate's profile. Be sure to consider both the content and presentation of the resume. Look beyond just the keywords to identify the candidate's overall qualifications and potential value to employers.
+    
+    For skills assessment, consider both explicitly stated skills and those implied by the candidate's experiences. For experience evaluation, assess both the breadth and depth of experience, as well as the trajectory of the candidate's career.
+    
+    Be specific in your analysis, citing examples from the resume where possible.
+    <|end_of_text|>
+  expected_output: >
+    A detailed analysis of the resume including:
+    
+    CANDIDATE PROFILE SUMMARY:
+    A concise overview of the candidate, including their professional identity, experience level, and core competencies.
+    
+    SKILLS ASSESSMENT:
+    An evaluation of the candidate's technical and soft skills, noting strengths and potential gaps. Include both explicitly stated skills and those implied by experience.
+    
+    EXPERIENCE EVALUATION:
+    An assessment of the candidate's work experience, including relevant roles, responsibilities, achievements, and progression.
+    
+    EDUCATION AND CERTIFICATIONS:
+    An analysis of the candidate's educational background and relevant certifications, including how well they align with their career path.
+  agent: resume_analyst
+
+job_analysis_task:
+  description: >
+    <|begin_of_text|>
+    Analyze the job description and identify the key requirements, skills, and priorities.
+    
+    Job Description:
+    {job_posting}
+    
+    Focus on:
+    1. Essential technical skills and qualifications
+    2. Required experience level and background
+    3. Educational requirements and certifications
+    4. Soft skills and character traits
+    5. Implicit requirements not directly stated
+    
+    Provide a comprehensive analysis of what the employer is looking for. Go beyond the explicitly stated requirements to identify the underlying needs and priorities. Consider the company culture and values that might be reflected in the job description.
+    
+    Pay special attention to language that indicates priority or importance, such as "must have," "required," or "essential" versus "preferred," "desired," or "a plus." Also look for clues about the role's challenges and opportunities.
+    <|end_of_text|>
+  expected_output: >
+    A detailed analysis of the job requirements including:
+    
+    POSITION OVERVIEW:
+    A concise summary of the role, its level, and its place within the organization.
+    
+    PRIMARY TECHNICAL REQUIREMENTS:
+    A clear breakdown of the technical skills, tools, and technologies required for the position, prioritized by importance.
+    
+    EXPERIENCE REQUIREMENTS:
+    An analysis of the required experience level, specific background, and industry knowledge needed for the role.
+    
+    EDUCATION AND CERTIFICATION REQUIREMENTS:
+    Details on the formal qualifications required or preferred for the position.
+    
+    KEY SOFT SKILLS AND TRAITS:
+    An assessment of the interpersonal, communication, and character traits that would be valuable in this role.
+  agent: job_analyst
+
+matching_analysis_task:
+  description: >
+    <|begin_of_text|>
+    Analyze how well the candidate's profile matches the job requirements.
+    
+    Resume Analysis:
+    {resume_keywords}
+    
+    Job Requirements:
+    {job_keywords}
+    
+    Based on the resume analysis and job analysis, provide:
+    1. Overall assessment of the match (as a percentage)
+    2. Key strengths that align with the job requirements
+    3. Critical gaps between the resume and job requirements
+    4. Specific suggestions to improve the resume for this job
+    
+    Be specific and actionable in your suggestions. Consider both the content of the resume and its presentation. Focus on how the candidate can better align their resume with this specific job opportunity.
+    
+    For each gap identified, provide a concrete recommendation for how to address it. This might involve adding missing keywords, restructuring sections, reframing experiences, or highlighting different achievements.
+    <|end_of_text|>
+  expected_output: >
+    A detailed matching analysis with:
+    
+    OVERALL MATCH ASSESSMENT:
+    A quantitative and qualitative assessment of how well the candidate's qualifications match the job requirements.
+    
+    KEY STRENGTHS ALIGNMENT:
+    A detailed analysis of the candidate's strongest qualifications that align with critical job requirements.
+    
+    CRITICAL GAPS:
+    A thorough identification of important job requirements that are not adequately addressed in the resume.
+    
+    IMPROVEMENT RECOMMENDATIONS:
+    Specific, actionable suggestions for improving the resume to better match this job opportunity.
+  agent: matching_specialist

@@ -1,0 +1,23 @@
+[project]
+name = "resume_job_matcher"
+version = "0.1.0"
+description = "resume-job-matcher using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.102.0,<1.0.0"
+]
+
+[project.scripts]
+resume_job_matcher = "resume_job_matcher.main:run"
+run_crew = "resume_job_matcher.main:run"
+train = "resume_job_matcher.main:train"
+replay = "resume_job_matcher.main:replay"
+test = "resume_job_matcher.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
