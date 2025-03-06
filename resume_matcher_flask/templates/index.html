@@ -124,6 +124,13 @@
     </div>
     {% endif %}
     
+    {% if debug_info %}
+    <div class="debug-info" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; margin-top: 10px; overflow-x: auto;">
+        <h3>Debug Information</h3>
+        <pre>{{ debug_info }}</pre>
+    </div>
+    {% endif %}
+    
     <form id="upload-form" method="POST" enctype="multipart/form-data">
         <div class="section">
             <h2>1. Upload Your Resume</h2>

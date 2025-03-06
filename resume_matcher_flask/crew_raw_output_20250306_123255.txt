@@ -1,0 +1,3 @@
+The candidate matches 85% of the job requirements, with key strengths in technical skills (programming languages, cloud platforms) and soft skills (communication, leadership, teamwork). A critical gap is identified in experience with emerging technologies such as AI, ML, or IoT. To improve their qualifications, it's recommended that they acquire hands-on experience or additional training in these areas to better align with the remaining 15% of the job requirements.
+
+```

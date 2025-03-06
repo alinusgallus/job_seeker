@@ -1,0 +1,47 @@
+```
+{
+  "match": 85,
+  "strengths": [
+    {
+      "category": "Expertise in HR and Recruitment",
+      "description": "15+ years of experience in HR and recruitment"
+    },
+    {
+      "category": "Analytical Skills",
+      "description": "Proficient in analyzing resumes and providing feedback for improvement"
+    },
+    {
+      "category": "Technical Skills",
+      "description": "Proficiency in data analysis software such as Excel or Tableau"
+    }
+  ],
+  "gaps": [
+    {
+      "category": "Limited Experience in Other Areas of HR",
+      "description": "Primarily focused on resume analysis and recruitment, with limited experience in other areas of human resources"
+    },
+    {
+      "category": "Lack of Certifications",
+      "description": "No certifications mentioned in the resume"
+    },
+    {
+      "category": "Limited Career Progression Details",
+      "description": "Career progression and professional development could be more evident"
+    }
+  ],
+  "suggestions": [
+    {
+      "category": "Include More Specific Examples of Achievements",
+      "description": "Add specific examples of achievements and impact in the resume"
+    },
+    {
+      "category": "Add Relevant Certifications or Continuing Education",
+      "description": "Consider adding relevant certifications or continuing education to enhance credibility and expertise"
+    },
+    {
+      "category": "Emphasize Career Progression and Professional Development",
+      "description": "Highlight career progression and professional development, with examples of growth and development in the role"
+    }
+  ]
+}
+```

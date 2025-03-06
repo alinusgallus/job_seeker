@@ -104,6 +104,13 @@
             background-color: #ffebee;
             border-color: #ffcdd2;
         }
+        .keywords-container {
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -114,7 +121,13 @@
             <div class="outer-circle"></div>
             <div class="progress-bar" style="--percentage: {{ (result.similarity_score * 100) | int }}%;"></div>
             <div class="inner-circle">
-                <div class="score">{{ (result.similarity_score * 100) | int }}%</div>
+                <div class="score">
+                    {% if result.ai_analysis.match_percentage is defined %}
+                        {{ result.ai_analysis.match_percentage }}%
+                    {% else %}
+                        {{ (result.similarity_score * 100) | int }}%
+                    {% endif %}
+                </div>
                 <div class="score-label">Match Score</div>
             </div>
         </div>
@@ -122,39 +135,53 @@
     
     <div class="section">
         <h2 class="section-title">Overall Match Assessment</h2>
-        <p>{{ result.ai_analysis.OVERALL_MATCH_ASSESSMENT }}</p>
+        <p>{{ result.ai_analysis.overall_match_assessment }}</p>
     </div>
     
     <div class="section">
         <h2 class="section-title">Key Strengths</h2>
-        <div>{{ result.ai_analysis.KEY_STRENGTHS_ALIGNMENT | safe }}</div>
+        <div>{{ result.ai_analysis.key_strengths_alignment | safe }}</div>
     </div>
     
     <div class="section">
         <h2 class="section-title">Critical Gaps</h2>
-        <div>{{ result.ai_analysis.CRITICAL_GAPS | safe }}</div>
+        <div>{{ result.ai_analysis.critical_gaps | safe }}</div>
     </div>
     
     <div class="section">
         <h2 class="section-title">Improvement Recommendations</h2>
-        <div>{{ result.ai_analysis.IMPROVEMENT_RECOMMENDATIONS | safe }}</div>
+        <div>{{ result.ai_analysis.improvement_recommendations | safe }}</div>
     </div>
     
     <div class="section">
         <h2 class="section-title">Keyword Analysis</h2>
         <div>
-            <h3>Matching Keywords ({{ result.matching_keywords_count }})</h3>
+            <h3>Key Matching Terms</h3>
             <div>
-                {% for i in range(min(15, result.matching_keywords_count)) %}
-                <span class="keyword">Keyword {{ i+1 }}</span>
-                {% endfor %}
+                {% if result.matching_keywords %}
+                    <p>Your resume contains these <strong>{{ result.keyword_metrics.important_matching_count }} important terms</strong> that match the job description (out of {{ result.matching_keywords_count }} total matches):</p>
+                    <div class="keywords-container">
+                        {% for keyword in result.matching_keywords %}
+                            <span class="keyword">{{ keyword }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No significant matching terms found.</p>
+                {% endif %}
             </div>
             
-            <h3>Missing Keywords ({{ result.missing_keywords_count }})</h3>
+            <h3>Important Missing Terms</h3>
             <div>
-                {% for i in range(min(15, result.missing_keywords_count)) %}
-                <span class="keyword missing-keyword">Keyword {{ i+1 }}</span>
-                {% endfor %}
+                {% if result.missing_keywords %}
+                    <p>Consider adding these <strong>{{ result.keyword_metrics.important_missing_count }} key terms</strong> from the job description to your resume (out of {{ result.missing_keywords_count }} total missing terms):</p>
+                    <div class="keywords-container">
+                        {% for keyword in result.missing_keywords %}
+                            <span class="keyword missing-keyword">{{ keyword }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No significant missing terms found.</p>
+                {% endif %}
             </div>
         </div>
     </div>

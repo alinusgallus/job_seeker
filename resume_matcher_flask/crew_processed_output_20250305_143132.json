@@ -1,0 +1,20 @@
+{
+  "ai_analysis": {
+    "match_percentage": 70,
+    "overall_match_assessment": "The candidate profile summary highlights Alain's 15 years of experience in leading cross-functional teams, implementing lean practices, and fostering stakeholder engagement. His expertise spans produc",
+    "key_strengths_alignment": "Could not extract key strengths alignment from analysis.",
+    "critical_gaps": "Could not extract critical gaps from analysis.",
+    "improvement_recommendations": "Could not extract improvement recommendations from analysis."
+  },
+  "similarity_score": 0.06894573552404253,
+  "matching_keywords_count": 33,
+  "missing_keywords_count": 406,
+  "keyword_metrics": {
+    "total_matching_count": 33,
+    "total_missing_count": 406,
+    "important_matching_count": 0,
+    "important_missing_count": 0
+  },
+  "matching_keywords": [],
+  "missing_keywords": []
+}

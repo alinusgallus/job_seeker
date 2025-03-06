@@ -1,0 +1,75 @@
+{
+  "match": {
+    "score": 0.9,
+    "fields": [
+      "skills",
+      "experience"
+    ]
+  },
+  "summary": [
+    "Alain has well-rounded technical skills relevant to his experience as a product leader.",
+    "He has expertise in product strategy, roadmap development, agile methodologies, and stakeholder engagement.",
+    "His work experience spans various industries and roles, demonstrating adaptability and ability to learn quickly."
+  ],
+  "skills": [
+    {
+      "name": "Agile Methodologies",
+      "description": "Alain has experience with agile methodologies, including Lean and User-Centered Design."
+    },
+    {
+      "name": "Lean Practices",
+      "description": "He has knowledge of lean practices and has applied them in his work."
+    },
+    {
+      "name": "Product Strategy and Roadmap Development",
+      "description": "Alain has expertise in product strategy and roadmap development, having guided product development teams and driven consensus on product roadmaps."
+    },
+    {
+      "name": "Stakeholder Engagement",
+      "description": "He has experience with stakeholder engagement, including client relations and user feedback integration."
+    }
+  ],
+  "experience": [
+    {
+      "title": "Head of Digital Transformation at International Disability Alliance (Non-Profit)",
+      "description": "Alain led technological initiatives that optimized operational conduct in a remote team with high accessibility requirements.",
+      "achievements": [
+        "Deployed an online training platform",
+        "Migrated the organization to Microsoft Office",
+        "Implemented robust GDPR compliance measures"
+      ]
+    },
+    {
+      "title": "Product Manager at Cenareo",
+      "description": "Alain built and led the product function, shifting focus from SMBs to Enterprise clients and addressing larger client challenges.",
+      "achievements": [
+        "Guided product development teams",
+        "Drove consensus on product roadmap",
+        "Monitored product metrics using Jupyter and Pandas"
+      ]
+    },
+    {
+      "title": "Senior Product Manager at Pivotal (Consulting)",
+      "description": "Alain supported product initiatives with major corporations and mentored client Product Managers.",
+      "achievements": [
+        "Championed agile development methodologies",
+        "Applied lean practices and user-centered design"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "George Mason University School of Management",
+      "degree": "Bachelor of Science in Information Systems and Operations Management"
+    },
+    {
+      "institution": "Stanford through Coursera",
+      "degree": "Machine Learning Specialization"
+    }
+  ],
+  "match_percentage": 70,
+  "overall_match_assessment": "Could not parse analysis results.",
+  "key_strengths_alignment": "Analysis unavailable.",
+  "critical_gaps": "Analysis unavailable.",
+  "improvement_recommendations": "Analysis unavailable."
+}

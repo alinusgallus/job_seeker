@@ -1,0 +1,20 @@
+{
+  "ai_analysis": {
+    "match_percentage": 75,
+    "overall_match_assessment": "Overall, the candidate has a strong track record of leveraging technology to solve business problems across various industries. They have a strong foundation in product strategy, roadmap development, agile methodologies, and stakeholder engagement. However, they need to focus on improving their skills in machine learning and cloud-based technologies to stay competitive in the market.",
+    "key_strengths_alignment": "Experience in product leadership and technical skills.",
+    "critical_gaps": "Some specific technical skills may be missing.",
+    "improvement_recommendations": "Highlight relevant experience more prominently."
+  },
+  "similarity_score": 0.06894573552404253,
+  "matching_keywords_count": 33,
+  "missing_keywords_count": 406,
+  "keyword_metrics": {
+    "total_matching_count": 33,
+    "total_missing_count": 406,
+    "important_matching_count": 0,
+    "important_missing_count": 0
+  },
+  "matching_keywords": [],
+  "missing_keywords": []
+}

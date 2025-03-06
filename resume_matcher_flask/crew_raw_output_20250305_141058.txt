@@ -1,0 +1,66 @@
+```json
+{
+  "name": "Alain",
+  "skills": [
+    {
+      "category": "Technical Skills",
+      "subCategory": "Agile Methodologies"
+    },
+    {
+      "category": "Technical Skills",
+      "subCategory": "Lean Practices"
+    },
+    {
+      "category": "Technical Skills",
+      "subCategory": "Product Strategy and Roadmap Development"
+    },
+    {
+      "category": "Soft Skills",
+      "subCategory": "Leadership"
+    },
+    {
+      "category": "Soft Skills",
+      "subCategory": "Communication"
+    },
+    {
+      "category": "Soft Skills",
+      "subCategory": "Problem-Solving"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Head of Digital Transformation at International Disability Alliance (Non-Profit)",
+      "description": "Led technological initiatives that optimized operational conduct in a remote team with high accessibility requirements. Deployed an online training platform, migrated the organization to Microsoft Office, and implemented robust GDPR compliance measures."
+    },
+    {
+      "title": "Product Manager at Cenareo",
+      "description": "Built and led the product function, shifting focus from SMBs to Enterprise clients and addressing larger client challenges. Guided product development teams, drove consensus on product roadmap, and monitored product metrics using Jupyter and Pandas."
+    },
+    {
+      "title": "Senior Product Manager at Pivotal (Consulting)",
+      "description": "Supported product initiatives with major corporations and mentored client Product Managers. Championed agile development methodologies and product practices, including Lean and User-Centered Design."
+    }
+  ],
+  "education": [
+    {
+      "institution": "George Mason University School of Management",
+      "degree": "Bachelor of Science in Information Systems and Operations Management"
+    },
+    {
+      "institution": "Stanford through Coursera",
+      "degree": "Machine Learning Specialization"
+    }
+  ],
+  "assessment": {
+    "strengths": [
+      "Well-rounded technical skills",
+      "Strong leadership and communication skills",
+      "Ability to adapt and learn quickly"
+    ],
+    "weaknesses": [
+      "Lack of explicit mention of machine learning as a key skill",
+      "Limited experience with cloud-based technologies"
+    ]
+  }
+}
+```
